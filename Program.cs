@@ -38,6 +38,10 @@ class Program
             {
                 OpcionContar();
             }
+            else if (opcion == 5)
+            {
+                OpcionFactorial();
+            }
             else if (opcion != 0)
             {
                 Console.WriteLine("Opción no válida.");
@@ -54,6 +58,7 @@ class Program
         Console.WriteLine("2. Sumar puntajes (recursivo e iterativo)");
         Console.WriteLine("3. Buscar código de estudiante (recursivo e iterativo)");
         Console.WriteLine("4. Contar archivos con una palabra clave (recursivo e iterativo)");
+        Console.WriteLine("5. Factorial (recursivo)");
         Console.WriteLine("0. Salir");
         Console.Write("Elige una opción: ");
     }
@@ -111,5 +116,27 @@ class Program
         int iterativa = Iterativas.ContarArchivosConPalabra(archivos, palabra);
         Console.WriteLine("Archivos con \"" + palabra + "\" (recursiva): " + recursiva);
         Console.WriteLine("Archivos con \"" + palabra + "\" (iterativa): " + iterativa);
+    }
+
+    static void OpcionFactorial()
+    {
+        Console.Write("n: ");
+        int n;
+        if (!int.TryParse(Console.ReadLine(), out n))
+        {
+            Console.WriteLine("Error: escribe un número entero.");
+            return;
+        }
+        if (n < 0)
+        {
+            Console.WriteLine("Error: no se permiten valores negativos.");
+            return;
+        }
+        if (n > 12)
+        {
+            Console.WriteLine("Error: el máximo es 12 (un int no guarda un valor mayor).");
+            return;
+        }
+        Console.WriteLine(n + "! = " + Recursivas.Factorial(n));
     }
 }
