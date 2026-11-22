@@ -34,6 +34,10 @@ class Program
             {
                 OpcionBuscar();
             }
+            else if (opcion == 4)
+            {
+                OpcionContar();
+            }
             else if (opcion != 0)
             {
                 Console.WriteLine("Opción no válida.");
@@ -49,6 +53,7 @@ class Program
         Console.WriteLine("1. Ver entregas");
         Console.WriteLine("2. Sumar puntajes (recursivo e iterativo)");
         Console.WriteLine("3. Buscar código de estudiante (recursivo e iterativo)");
+        Console.WriteLine("4. Contar archivos con una palabra clave (recursivo e iterativo)");
         Console.WriteLine("0. Salir");
         Console.Write("Elige una opción: ");
     }
@@ -90,5 +95,21 @@ class Program
             Console.WriteLine("Encontrado en la posición " + recursiva + " (recursiva).");
             Console.WriteLine("Encontrado en la posición " + iterativa + " (iterativa).");
         }
+    }
+
+    static void OpcionContar()
+    {
+        Console.Write("Palabra clave (ejemplo final o v2): ");
+        string palabra = Console.ReadLine();
+        if (palabra == "")
+        {
+            Console.WriteLine("Error: la palabra clave no puede estar vacía.");
+            return;
+        }
+
+        int recursiva = Recursivas.ContarArchivosConPalabra(archivos, palabra);
+        int iterativa = Iterativas.ContarArchivosConPalabra(archivos, palabra);
+        Console.WriteLine("Archivos con \"" + palabra + "\" (recursiva): " + recursiva);
+        Console.WriteLine("Archivos con \"" + palabra + "\" (iterativa): " + iterativa);
     }
 }

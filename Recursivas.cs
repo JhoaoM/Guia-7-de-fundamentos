@@ -18,4 +18,14 @@ public static class Recursivas
 
         return BuscarCodigo(codigos, codigo, indice + 1);
     }
+
+    public static int ContarArchivosConPalabra(string[] archivos, string palabra, int indice = 0)
+    {
+        if (indice == archivos.Length)
+            return 0;
+
+        int coincide = archivos[indice].Contains(palabra) ? 1 : 0;
+
+        return coincide + ContarArchivosConPalabra(archivos, palabra, indice + 1);
+    }
 }

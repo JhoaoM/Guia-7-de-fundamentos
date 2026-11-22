@@ -18,4 +18,17 @@ public static class Iterativas
         }
         return -1;
     }
+
+    public static int ContarArchivosConPalabra(string[] archivos, string palabra)
+    {
+        int cantidad = 0;
+        for (int i = 0; i < archivos.Length; i++)
+        {
+            if (archivos[i].Contains(palabra))
+            {
+                cantidad++;
+            }
+        }
+        return cantidad;
+    }
 }
