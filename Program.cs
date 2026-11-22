@@ -42,6 +42,10 @@ class Program
             {
                 OpcionFactorial();
             }
+            else if (opcion == 6)
+            {
+                EjecutarPruebas();
+            }
             else if (opcion != 0)
             {
                 Console.WriteLine("Opción no válida.");
@@ -59,6 +63,7 @@ class Program
         Console.WriteLine("3. Buscar código de estudiante (recursivo e iterativo)");
         Console.WriteLine("4. Contar archivos con una palabra clave (recursivo e iterativo)");
         Console.WriteLine("5. Factorial (recursivo)");
+        Console.WriteLine("6. Ejecutar pruebas");
         Console.WriteLine("0. Salir");
         Console.Write("Elige una opción: ");
     }
@@ -138,5 +143,25 @@ class Program
             return;
         }
         Console.WriteLine(n + "! = " + Recursivas.Factorial(n));
+    }
+
+    static void Probar(string nombre, int esperado, int obtenido)
+    {
+        string estado = esperado == obtenido ? "OK" : "FALLA";
+        Console.WriteLine(nombre + " | esperado: " + esperado + " | obtenido: " + obtenido + " | " + estado);
+    }
+
+    static void EjecutarPruebas()
+    {
+        string[] listaVacia = new string[0];
+
+        Probar("Caso base: Factorial(0)", 1, Recursivas.Factorial(0));
+        Probar("Caso recursivo: Factorial(4)", 24, Recursivas.Factorial(4));
+        Probar("Lista vacía: buscar 20260001", -1, Recursivas.BuscarCodigo(listaVacia, "20260001"));
+        Probar("Código existente: 20260004", 3, Recursivas.BuscarCodigo(codigos, "20260004"));
+        Probar("Código inexistente: 99999999", -1, Recursivas.BuscarCodigo(codigos, "99999999"));
+        Probar("Suma recursiva de puntajes", 121, Recursivas.SumarPuntajes(puntajes));
+        Probar("Suma iterativa de puntajes", 121, Iterativas.SumarPuntajes(puntajes));
+        Probar("Conteo recursivo de final", 3, Recursivas.ContarArchivosConPalabra(archivos, "final"));
     }
 }
