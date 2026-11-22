@@ -26,6 +26,10 @@ class Program
             {
                 MostrarEntregas();
             }
+            else if (opcion == 2)
+            {
+                OpcionSumar();
+            }
             else if (opcion != 0)
             {
                 Console.WriteLine("Opción no válida.");
@@ -39,6 +43,7 @@ class Program
     {
         Console.WriteLine("\n===== ANÁLISIS DE ENTREGAS DIGITALES =====");
         Console.WriteLine("1. Ver entregas");
+        Console.WriteLine("2. Sumar puntajes (recursivo e iterativo)");
         Console.WriteLine("0. Salir");
         Console.Write("Elige una opción: ");
     }
@@ -49,5 +54,13 @@ class Program
         {
             Console.WriteLine(codigos[i] + " | " + archivos[i] + " | " + puntajes[i]);
         }
+    }
+
+    static void OpcionSumar()
+    {
+        int recursiva = Recursivas.SumarPuntajes(puntajes);
+        int iterativa = Iterativas.SumarPuntajes(puntajes);
+        Console.WriteLine("Suma de puntajes (recursiva): " + recursiva);
+        Console.WriteLine("Suma de puntajes (iterativa): " + iterativa);
     }
 }
