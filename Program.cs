@@ -30,6 +30,10 @@ class Program
             {
                 OpcionSumar();
             }
+            else if (opcion == 3)
+            {
+                OpcionBuscar();
+            }
             else if (opcion != 0)
             {
                 Console.WriteLine("Opción no válida.");
@@ -44,6 +48,7 @@ class Program
         Console.WriteLine("\n===== ANÁLISIS DE ENTREGAS DIGITALES =====");
         Console.WriteLine("1. Ver entregas");
         Console.WriteLine("2. Sumar puntajes (recursivo e iterativo)");
+        Console.WriteLine("3. Buscar código de estudiante (recursivo e iterativo)");
         Console.WriteLine("0. Salir");
         Console.Write("Elige una opción: ");
     }
@@ -62,5 +67,28 @@ class Program
         int iterativa = Iterativas.SumarPuntajes(puntajes);
         Console.WriteLine("Suma de puntajes (recursiva): " + recursiva);
         Console.WriteLine("Suma de puntajes (iterativa): " + iterativa);
+    }
+
+    static void OpcionBuscar()
+    {
+        Console.Write("Código de estudiante: ");
+        string codigo = Console.ReadLine();
+        if (codigo == "")
+        {
+            Console.WriteLine("Error: el código no puede estar vacío.");
+            return;
+        }
+
+        int recursiva = Recursivas.BuscarCodigo(codigos, codigo);
+        int iterativa = Iterativas.BuscarCodigo(codigos, codigo);
+        if (recursiva == -1)
+        {
+            Console.WriteLine("Código no encontrado (resultado -1).");
+        }
+        else
+        {
+            Console.WriteLine("Encontrado en la posición " + recursiva + " (recursiva).");
+            Console.WriteLine("Encontrado en la posición " + iterativa + " (iterativa).");
+        }
     }
 }

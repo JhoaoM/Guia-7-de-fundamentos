@@ -9,4 +9,13 @@ public static class Iterativas
         }
         return suma;
     }
+
+    public static int BuscarCodigo(string[] codigos, string codigo)
+    {
+        for (int i = 0; i < codigos.Length; i++)
+        {
+            if (codigos[i] == codigo) return i;
+        }
+        return -1;
+    }
 }
